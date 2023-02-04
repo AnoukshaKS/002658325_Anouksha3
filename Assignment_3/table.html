@@ -7,10 +7,84 @@
 	<title>Table CheckList</title>
 	<link rel="stylesheet" type="text/css" href="table.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	
+	<script>
+		
+		
+		function deleteRw(x){
+			alert("Record deleted successfully");
+  let ele = document.getElementsByClassName("glow")[x];
+  ele.remove();
+
+  flag[x] = false;
+  checkflag(x);
+}
+function editRw(x){
+	alert("Edit the details")
+	flag[x] = false;
+  checkflag(x);
+}
+      
+
+var ch=true;
+function collaps(y){
+	if(ch){
+		document.getElementsByClassName("dropDownTextArea")[y].style.display="contents";
+	}
+	else{
+		document.getElementsByClassName("dropDownTextArea")[y].style.display="none";
+	}
+	ch =!ch;
+}
+var flag = new Array();
+var col=true;
+function check(x){
+	var chec=document.getElementsByClassName("ent")[x].checked;
+	if(chec){
+	document.getElementsByClassName("glow")[x].style.backgroundColor = 'orange';
+	document.getElementsByClassName('glo')[x].style.display="revert";
+	flag[x]=true;
+	col =false;
+}
+else{
+	document.getElementsByClassName("glow")[x].style.backgroundColor = 'white';
+	document.getElementsByClassName('glo')[x].style.display="none";
+	flag[x]=false;
+	col=true;
+}
+ 
+
+checkflag(x);
+}
+// function myfunction(y){
+// 	let a= y.rowIndex;
+// 	return a;
+// }
+
+function checkflag(x) {
+	var key=false;
+	key = flag[x];
+	if(key == true){
+      document.getElementById("button").disabled = false;
+      document.getElementById("button").style.backgroundColor = 'orange';
+    }
+    else{ 
+      document.getElementById("button").disabled = true;
+      document.getElementById("button").style.color='black';
+	  document.getElementById("button").style.backgroundColor = 'grey';
+    
+}
+}
+
+	</script>
+	<style>
+/* button{
+	display: ruby;
+} */
+	</style>
 </head>
 <body>
 	<table id="myTable">
+	<tbody id="tableBody"></tbody>
 		<tr>
 			<th></th>
 			<th>STUDENT</th>
@@ -21,9 +95,10 @@
 			<th>BUDGET<br />#</th>
 			<th>PERCENTAGE</th>
 			<th>DELETE</th>
+			<th>EDIT</th>
 		</tr>
-		<tr>
-			<td><input type="checkbox" /><br /><br /><img src="down.png" width="25px" /></td>
+		<tr class="glow"> 
+			<td><input type="checkbox" class="ent" onclick="check(0)" /><br /><br /><img src="down.png" width="25px" onclick="collaps(0)"/></td>
 			<td>Student 1</td>
 			<td>Teacher 1</td>
 			<td>Approved</td>
@@ -31,6 +106,8 @@
 			<td>TA</td>
 			<td>12345</td>
 			<td>100%</td>
+			<td><button class ="glo" onclick="deleteRw(0)">Delete</button></td>
+			<td><button class ="glo" onclick="editRw(0)">Edit</button></td>
 			<td></td>
 		</tr>
 		<tr class="dropDownTextArea"><td colspan="8">
@@ -42,8 +119,8 @@
 			Comments:<br /><br /><br />
 			Award Status:<br /><br /><br />
 		</td></tr>
-		<tr bgcolor="orange">
-			<td><input type="checkbox" checked/><br /><br /><img src="down.png" width="25px" /></td>
+		<tr class="glow">
+			<td><input type="checkbox" class="ent" onclick="check(1)"/><br /><br /><img src="down.png" width="25px" onclick="collaps(1)"/></td>
 			<td>Student 2</td>
 			<td>Teacher 2</td>
 			<td>Approved</td>
@@ -51,7 +128,7 @@
 			<td>TA</td>
 			<td>23456</td>
 			<td>100%</td>
-			<td><button>Delete</button></td>
+			<td class="glo" onclick="deleteRw(1)"><button>Delete</button></td>
 		</tr>
 		<tr class="dropDownTextArea"><td colspan="8">
 			Advisor:<br /><br />
@@ -62,8 +139,8 @@
 			Comments:<br /><br /><br />
 			Award Status:<br /><br /><br />
 		</td></tr>
-		<tr>
-			<td><input type="checkbox" /><br /><br /><img src="down.png" width="25px" /></td>
+		<tr class="glow">
+			<td><input type="checkbox" class="ent" onclick="check(2)" /><br /><br /><img src="down.png" width="25px" onclick="collaps(2)" /></td>
 			<td>Student 3</td>
 			<td>Teacher 3</td>
 			<td>Approved</td>
@@ -71,7 +148,7 @@
 			<td>TA</td>
 			<td>34567</td>
 			<td>100%</td>
-			<td></td>
+			<td class="glo" onclick="deleteRw(2)"><button>Delete</button></td>
 		</tr>
 		<tr class="dropDownTextArea"><td colspan="8">
 			Advisor:<br /><br />
@@ -82,13 +159,18 @@
 			Comments:<br /><br /><br />
 			Award Status:<br /><br /><br />
 		</td></tr>
+	</tbody>
 	</table>
 
 	<br /><br />
 	
-	<button id="button">SUBMIT SELECTED AWARDS</button>
-	<button id="add">Add New Student</button>
+	<button class="bu" id="button">SUBMIT SELECTED AWARDS</button>
 
+
+	<button id="add" onclick="addStudent()" ondblclick="myFunction()">Add New Student</button>
+
+
+	
 	<nav class="socialmediaicons"></nav>
 	<script src="script.js"></script>
 	
