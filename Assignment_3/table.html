@@ -18,9 +18,12 @@
   flag[x] = false;
   checkflag(x);
 }
-function editRw(x){
+function editRw(){
 	alert("Edit the details")
-	flag[x] = false;
+	let elem = document.getElementsByClassName("glow")[x];
+  elem.remove();
+
+  flag[x] = false;
   checkflag(x);
 }
       
@@ -42,12 +45,14 @@ function check(x){
 	if(chec){
 	document.getElementsByClassName("glow")[x].style.backgroundColor = 'orange';
 	document.getElementsByClassName('glo')[x].style.display="revert";
+	// document.getElementsByClassName('glos')[x].style.display="revert";
 	flag[x]=true;
 	col =false;
 }
 else{
 	document.getElementsByClassName("glow")[x].style.backgroundColor = 'white';
 	document.getElementsByClassName('glo')[x].style.display="none";
+	// document.getElementsByClassName('glos')[x].style.display="none";
 	flag[x]=false;
 	col=true;
 }
@@ -107,8 +112,8 @@ function checkflag(x) {
 			<td>12345</td>
 			<td>100%</td>
 			<td><button class ="glo" onclick="deleteRw(0)">Delete</button></td>
-			<td><button class ="glo" onclick="editRw(0)">Edit</button></td>
-			<td></td>
+			<!-- <td><button class ="glos" onclick="editRw(0)">Edit</button></td> -->
+			
 		</tr>
 		<tr class="dropDownTextArea"><td colspan="8">
 			Advisor:<br /><br />
@@ -129,6 +134,8 @@ function checkflag(x) {
 			<td>23456</td>
 			<td>100%</td>
 			<td class="glo" onclick="deleteRw(1)"><button>Delete</button></td>
+			<!-- <td><button class ="glos" onclick="editRw(1)">Edit</button></td> -->
+	
 		</tr>
 		<tr class="dropDownTextArea"><td colspan="8">
 			Advisor:<br /><br />
@@ -149,6 +156,8 @@ function checkflag(x) {
 			<td>34567</td>
 			<td>100%</td>
 			<td class="glo" onclick="deleteRw(2)"><button>Delete</button></td>
+			<!-- <td><button class ="glos" onclick="editRw(2)" >Edit</button></td> -->
+			
 		</tr>
 		<tr class="dropDownTextArea"><td colspan="8">
 			Advisor:<br /><br />
@@ -169,7 +178,7 @@ function checkflag(x) {
 
 	<button id="add" onclick="addStudent()" ondblclick="myFunction()">Add New Student</button>
 
-
+	
 	
 	<nav class="socialmediaicons"></nav>
 	<script src="script.js"></script>

@@ -51,6 +51,7 @@ function addStudent(){
   let row = document.createElement("TR");
   row.className = "glow";
 
+  
     
     let col = document.createElement('TD');
 
