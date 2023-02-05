@@ -10,7 +10,7 @@
 	<script>
 		
 		
-		function deleteRw(x){
+function deleteRw(x){
 			alert("Record deleted successfully");
   let ele = document.getElementsByClassName("glow")[x];
   ele.remove();
@@ -20,8 +20,7 @@
 }
 function editRw(){
 	alert("Edit the details")
-	let elem = document.getElementsByClassName("glow")[x];
-  elem.remove();
+	
 
   flag[x] = false;
   checkflag(x);
@@ -45,14 +44,14 @@ function check(x){
 	if(chec){
 	document.getElementsByClassName("glow")[x].style.backgroundColor = 'orange';
 	document.getElementsByClassName('glo')[x].style.display="revert";
-	// document.getElementsByClassName('glos')[x].style.display="revert";
+	// document.getElementsByClassName('glos')[x].style.display="hidden";
 	flag[x]=true;
 	col =false;
 }
 else{
 	document.getElementsByClassName("glow")[x].style.backgroundColor = 'white';
 	document.getElementsByClassName('glo')[x].style.display="none";
-	// document.getElementsByClassName('glos')[x].style.display="none";
+	//  document.getElementsByClassName('glos')[x].style.display="none";
 	flag[x]=false;
 	col=true;
 }
@@ -100,7 +99,7 @@ function checkflag(x) {
 			<th>BUDGET<br />#</th>
 			<th>PERCENTAGE</th>
 			<th>DELETE</th>
-			<th>EDIT</th>
+			<th>EDIT</th> 
 		</tr>
 		<tr class="glow"> 
 			<td><input type="checkbox" class="ent" onclick="check(0)" /><br /><br /><img src="down.png" width="25px" onclick="collaps(0)"/></td>
@@ -112,7 +111,7 @@ function checkflag(x) {
 			<td>12345</td>
 			<td>100%</td>
 			<td><button class ="glo" onclick="deleteRw(0)">Delete</button></td>
-			<!-- <td><button class ="glos" onclick="editRw(0)">Edit</button></td> -->
+			<td><button class ="glos" onclick="editRw(0)">Edit</button></td>
 			
 		</tr>
 		<tr class="dropDownTextArea"><td colspan="8">
